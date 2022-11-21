@@ -17,15 +17,18 @@ export const App = () => {
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
   ]);
 
-  const [sodukuState, setsodukuState] = useState<{}>({
-    data: [
-      {
-        puzzle: "",
-        solution: "",
-        status: "",
-        message: null,
-      },
-    ],
+  interface sodukuData {
+    puzzle: string;
+    solution: string;
+    status: string;
+    message: string;
+  }
+
+  const [sodukuState, setsodukuState] = useState<sodukuData>({
+    puzzle: "",
+    solution: "",
+    status: "",
+    message: "",
   });
   const handleFinish = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,9 +50,8 @@ export const App = () => {
       }
     );
     const data = await response.json();
-    console.log(data);
-    setsodukuState(data);
-    console.log(sodukuState);
+    console.log(data.data[0]);
+    setsodukuState(data.data[0]);
   };
 
   const handleSetsodukuGrid = async (
@@ -88,6 +90,9 @@ export const App = () => {
       </form>
       <div>
         <h1>Result</h1>
+        show soduku state here
+        <h3>The Soduku you entered is : {sodukuState?.status}</h3>
+        <h3>{sodukuState?.message}</h3>
       </div>
     </div>
   );
