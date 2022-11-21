@@ -1,0 +1,67 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.soduku-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  border: #333 1px solid;
+}
+
+.soduku-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  font-size: 2em;
+  font-weight: 500;
+  color: #333;
+  background-color: #fff;
+  transition: background-color 0.25s;
+  margin: 2px;
+}
+
+.soduku-input{
+  width: 45px;
+  height: 45px;
+  font-size: larger;
+  border: 0px #fff  ;
+}
