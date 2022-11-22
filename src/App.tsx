@@ -52,6 +52,16 @@ export const App = () => {
     const data = await response.json();
     console.log(data.data[0]);
     setsodukuState(data.data[0]);
+    const solution = data.data[0].solution;
+    const solutionGrid = new Array(9).fill("").map(() => new Array(9).fill(0));
+    for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
+      for (let cellIndex = 0; cellIndex < 9; cellIndex++) {
+        solutionGrid[rowIndex][cellIndex] = parseInt(
+          solution.charAt(rowIndex * 9 + cellIndex)
+        );
+      }
+    }
+    setsodukuGrid(solutionGrid);
   };
 
   const handleSetsodukuGrid = async (
@@ -63,6 +73,19 @@ export const App = () => {
     newGrid[rowIndex][cellIndex] = parseInt(e);
     setsodukuGrid(newGrid);
   };
+
+  function thereIsError() {
+    return (
+      <div>
+        <h3>The Soduku you entered is : {sodukuState?.status}</h3>
+        <h3>And the Errors Are : {sodukuState?.message}</h3>
+      </div>
+    );
+  }
+
+  function thereIsNoError() {
+    return <h3>The Soduku you entered is : {sodukuState?.status}</h3>;
+  }
 
   return (
     <div className="App">
@@ -91,8 +114,7 @@ export const App = () => {
       <div>
         <h1>Result</h1>
         show soduku state here
-        <h3>The Soduku you entered is : {sodukuState?.status}</h3>
-        <h3>{sodukuState?.message}</h3>
+        {sodukuState?.status === "error" ? thereIsError() : thereIsNoError()}
       </div>
     </div>
   );
